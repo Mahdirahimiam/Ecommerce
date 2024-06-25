@@ -1,2 +1,2 @@
 # Ecommerce
-Ecommerce priject with node js and react.
+Ecommerce project with node js and react.
