@@ -56,6 +56,10 @@ const userSchema = new mongoose.Schema(
       match:
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/gm,
     },
+    dataUser: {
+      type: Boolean,
+      default: false,
+    },
     address: { type: addressSchema, required: [true, "آدرس الزامی می باشد"] },
     cart: { type: cartSchema, required: [true, "cart is required"] },
   },
