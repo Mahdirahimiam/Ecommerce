@@ -21,6 +21,6 @@ const discountCodeSchema = new mongoose.Schema({
   endTime: {
     type: String,
   },
-});
+},{timestamps:true});
 const Discount = mongoose.model("Discount", discountCodeSchema);
 export default Discount;
