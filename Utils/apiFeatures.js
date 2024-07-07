@@ -5,7 +5,7 @@ class ApiFeatures {
   }
   filters() {
     const queryObj = { ...this.queryString };
-    const fieldsItems = ["page", "sort", "limit", "fields"];
+    const fieldsItems = ["page", "sort", "limit", "fields", "populate"];
     for (const key in fieldsItems) {
       delete queryObj[key];
     }
@@ -30,18 +30,6 @@ class ApiFeatures {
     }
     return this;
   }
-  search() {
-    if (this.queryString.search) {
-      const search = this.queryString.search;
-      const searchField = Object.keys(search)[0];
-      const searchValue = search[searchField];
-      const regex = new RegExp(searchValue, "i");
-      this.query = this.query.find({ [searchField]: regex });
-    } else {
-      this.query = this.query.select("-__v");
-    }
-    return this;
-  }
   paginate() {
     const page = this.queryString.page * 1 || 1;
     let limit = this.queryString.limit * 1 || 20;
@@ -53,6 +41,18 @@ class ApiFeatures {
     if (this.queryString.populate) {
       const populateBy = this.queryString.populate.split(",").join(" ");
       this.query = this.query.populate(populateBy);
+    }
+    return this;
+  }
+  search() {
+    if (this.queryString.search) {
+      const search = this.queryString.search;
+      const searchField = Object.keys(search)[0];
+      const searchValue = search[searchField];
+      const regex = new RegExp(searchValue, "i");
+      this.query = this.query.find({ [searchField]: regex });
+    } else {
+      this.query = this.query.select("-__v");
     }
     return this;
   }
