@@ -11,7 +11,7 @@ const isAdmin = catchAsync(async (req, res, next) => {
       return next(new HandleError(403, "You are not an admin!"));
     return next();
   } catch (err) {
-    return next(new HandleError("you dnot`t have permission", 401));
+    return next(new HandleError("you don`t have permission", 401));
   }
 });
 
