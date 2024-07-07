@@ -29,18 +29,15 @@ const userSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
-      required: [true, "نام و نلم خانوادگی الزامی می باشد"],
     },
     phone: {
       type: String,
       required: [true, "شماره تلفن الزامی می باشد"],
-      unique: [true, `شماره تلفن تکراری می باشد`],
       trim: true,
       match: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
     },
     nationalCode: {
       type: String,
-      unique: [true, `کد ملی تکراری می باشد`],
       trim: true,
       match: /^\d{10}$/gm,
     },
@@ -51,7 +48,6 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "رمز عبور الزامی می باشد"],
       trim: true,
       match:
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/gm,
@@ -60,8 +56,12 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    address: { type: addressSchema, required: [true, "آدرس الزامی می باشد"] },
-    cart: { type: cartSchema, required: [true, "cart is required"] },
+    isLogin: {
+      type: Boolean,
+      default: false,
+    },
+    address: { type: addressSchema },
+    cart: { type: cartSchema },
   },
   { timestamps: true }
 );
