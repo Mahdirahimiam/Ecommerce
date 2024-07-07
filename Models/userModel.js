@@ -60,6 +60,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isPassword: {
+      type: Boolean,
+      default: false,
+    },
     address: { type: addressSchema },
     cart: { type: cartSchema },
   },
