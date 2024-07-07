@@ -34,7 +34,7 @@ app.use("/api/v1/payment", paymentRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/report", reportRouter);
 app.use("/api/v1/slider", sliderRouter);
-app.use("/api/v1/user", userRouter);
+app.use("/api/v1/users", userRouter);
 app.use("/api/v1/variant", variantRouter);
 app.use("*", (req, res, next) => {
   return next(new HandleError("route not found", 404));
