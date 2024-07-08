@@ -13,6 +13,10 @@ const commentSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
     },
+    accepted:{
+      type:Boolean,
+      default:false
+    }
   },
   { timestamps: true }
 );
