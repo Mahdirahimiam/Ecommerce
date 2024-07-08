@@ -3,7 +3,7 @@ const sliderSchema = new mongoose.Schema({
   title: {
     type: String,
   },
-  description: {
+  alt: {
     type: String,
   },
   image: {
