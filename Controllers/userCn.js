@@ -1,6 +1,7 @@
 import User from "../Models/userModel.js";
 import ApiFeatures from "../Utils/apiFeatures.js";
 import catchAsync from "../Utils/catchAsync.js";
+import HandleError from "../Utils/handleError.js";
 
 export const getAllUser = catchAsync(async (req, res, next) => {
   const userApiFeature = new ApiFeatures(User, req.query)
