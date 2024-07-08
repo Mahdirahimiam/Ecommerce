@@ -30,3 +30,32 @@ export const getOneUser = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+export const updateUser = catchAsync(async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const blog = await User.findByIdAndUpdate(
+      id,
+      { ...req.body },
+      { new: true, runValidators: true }
+    );
+    return res.status(200).json({
+      success: true,
+      message: "update successfully",
+    });
+  } catch (err) {
+    return next(new HandleError("invalid id", 404));
+  }
+});
+export const deleteUser = catchAsync(async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const blog = await User.findByIdAndDelete(id);
+    return res.status(200).json({
+      success: true,
+      message: "deleted successfully",
+    });
+  } catch (err) {
+    return next(new HandleError("invalid id", 404));
+  }
+});
